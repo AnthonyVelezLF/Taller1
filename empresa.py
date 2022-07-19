@@ -106,6 +106,7 @@ class CertificarUsuario(Usuario):
     n=nombre
     if (n == nombre)and(cedula==contra):
       print("El usuario '{}' está certificado".format(nombre))
+      CrearUsuario.registro()
     else:
       print("El usuario '{}' no está certificado".format(nombre))
     
@@ -132,7 +133,7 @@ while opcion != "3":
         telefono=input("Telefono:")
         art= CrearUsuario(cedula,nombre,direccion,telefono,correo)
         articulo = art.registro()
-        CrearUsuario.usuarios.append(articulo)
+        #CrearUsuario.usuarios.append(articulo)
 
         input("USUARIO CREADO presiona ENTER para regresar")
       
@@ -180,5 +181,5 @@ while opcion != "3":
         input("presiona cualquier tecla para regresar")
         art= CrearUsuario(cedula,nombre,direccion,telefono,correo)
         articulo = art.registro()
-        CrearUsuario.usuarios.append(articulo)34
+        CrearUsuario.usuarios.append(articulo)
         
