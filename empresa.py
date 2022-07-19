@@ -13,7 +13,6 @@ class Usuario():
   @abstractmethod
   def mostrar(self):
     print(self.nombre,self.cedula,self.direccion,self.correo,self.telefono)
-        
     
 class CrearUsuario(Usuario):
   secuencia=2             
