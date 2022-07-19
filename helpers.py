@@ -1,4 +1,5 @@
 class Helper:
+  
   def __init__(self):
     x=10
     pass
