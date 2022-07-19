@@ -13,6 +13,7 @@ class Usuario():
   @abstractmethod
   def mostrar(self):
     print(self.nombre,self.cedula,self.direccion,self.correo,self.telefono)
+        
     
 class CrearUsuario(Usuario):
   secuencia=2             
@@ -94,6 +95,19 @@ class EditarDatos(Usuario):
       print ("Correo: '{}' INCORRECTO(campo vacio)".format(correo))
     else:
       correo= input("Correo: ")
+  
+class CertificarUsuario(Usuario):
+  def __init__(self, nombre, direccion, cedula, email,contra):
+    super().__init__(nombre, direccion, cedula, email, contra)
+  
+  def Certificar(self):
+    contra=input("Ingrese contraseña del Usuario(debe ser igual a la cedula): ")
+    # contra=cedula
+    n=nombre
+    if (n == nombre)and(cedula==contra):
+      print("El usuario '{}' está certificado".format(nombre))
+    else:
+      print("El usuario '{}' no está certificado".format(nombre))
     
       
 helper = Helper()
@@ -104,10 +118,10 @@ while opcion != "3":
   opcion = helper.menu(lista,"*"*20+" MÓDULO DE SEGURDAD DEL SISTEMA ADMINISTRATIVO "+"*"*20)
   if opcion == "1":
     opc1=""
-    while opc1 != "5":
+    while opc1 != "6":
       os.system("cls")
       print("*"*20,"OPCIONES DE USUARIOS","*"*20)
-      opc1 = helper.menu(["1) Crear Usuario","2) Validar Usuario","3) Editar Usuario","4) Lista de Usuarios","5) Salir"],"")
+      opc1 = helper.menu(["1) Crear Usuario","2) Validar Usuario","3) Editar Usuario","4) Certificar Usuario","5) Lista de Usuarios","6) Salir"],"")
       os.system("cls")
       if opc1 == "1":
         print("*"*20,"CREAR USUARIO","*"*20)
@@ -136,13 +150,13 @@ while opcion != "3":
         direccion=input("Dirección: ") 
         correo=input("Correo: ")
         telefono=input("Telefono(minimo 8 digitos):")
-        art= CrearUsuario(cedula,nombre,direccion,telefono,correo)
-        articulo = art.registro()
-        CrearUsuario.usuarios.append(articulo)
+        # art= CrearUsuario(cedula,nombre,direccion,telefono,correo)
+        # articulo = art.registro()
+        # CrearUsuario.usuarios.append(articulo)
 
         input("USUARIO EDITADO ENTER para regresar")
     
-      elif opc1 == "4":
+      elif opc1 == "5":
         print("*"*20,"LISTADO DE USUARIOS","*"*20)
         print("Cedula"," "*8,"Nombre"," "*5,"Direccion"," "*5,"Telefono"," "*5,"Correo"," "*5)
         for art in  CrearUsuario.usuarios:
@@ -157,4 +171,14 @@ while opcion != "3":
         print("")
         print("*"*59)
         input("Presione una tecla para continuar...")
+
+      if opc1 == "4":
+        print("*"*20,"Certificado Usuario","*"*20)
+        car=CertificarUsuario(nombre,direccion,cedula,telefono,correo)
+        car3=VerificarDatos(nombre,direccion,cedula,telefono,correo)
+        car.Certificar()
+        input("presiona cualquier tecla para regresar")
+        art= CrearUsuario(cedula,nombre,direccion,telefono,correo)
+        articulo = art.registro()
+        CrearUsuario.usuarios.append(articulo)34
         
